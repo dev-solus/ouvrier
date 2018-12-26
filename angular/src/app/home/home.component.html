@@ -1,0 +1,75 @@
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4 mt-3">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">featured_play_list</mat-icon>&nbsp;
+      A propos de l'app
+    </ng-template>
+    <div class="col-md-12 p-5">
+      <div [innerHTML]="varHTML"></div>
+      <!-- <p style="font-size: 20px; font-family: Georgia, 'Times New Roman', Times, serif">
+        Cette application web vous permet de trouver l’ouvrier/ l’artisan qui vous convient, elle réunit des
+        informations
+        fiables sur les professionnels autour de chez vous et vous évite de passer des heures à chercher celui qui
+        offre un service de qualité ! Ce portail est destiné au public. <br>
+        Cette application a été crée par les dernières technologies de web. Notamment Asp.Net Core 2.1 et Angular 7. <br>
+        -L’application est devisée en deux parties: <br>
+        &nbsp;&nbsp;&nbsp;• Back-end: Rest-full APi par ASP Core et MySQL. <br>
+        &nbsp;&nbsp;&nbsp;• Front-end: Angular 7. <br>
+        -Ainsi que l'utilisation de SignalR pour le real time request (utilise pour les like et les commentaires).
+        -la partie Design : Angular-material et Bootstrap-grid.
+        -Implémentation de Mapp-Google afin de facilité la recherche.
+      </p> -->
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">contact_mail</mat-icon>&nbsp;
+      Nous contacter
+    </ng-template>
+    <div class="container mt-5 mb-5">
+
+
+      <div class="row" style="justify-content: center;">
+        <mat-card class="example-card col-md-5 m-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+            </div>
+            <mat-card-title>Khadija</mat-card-title>
+            <mat-card-subtitle>El Haddaoui</mat-card-subtitle>
+          </mat-card-header>
+          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+          <mat-card-content>
+            <p>
+              developpeur .Net core et javascript. passionne par le code et la developpeement des application multi
+              plateform.
+              pour plus d'information veuillez telecharger mon cv
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="download('Elhaddaoui.doc')">Telecharger le CV</button>
+          </mat-card-actions>
+        </mat-card>
+        <!--  -->
+        <mat-card class="example-card col-md-5 m-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image2"></div>
+            <mat-card-title>Mohamed</mat-card-title>
+            <mat-card-subtitle>Mourabit</mat-card-subtitle>
+          </mat-card-header>
+          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+          <mat-card-content>
+            <p>
+              developpeur .Net core et javascript. passionne par le code et la developpeement des application multi
+              plateform.
+              pour plus d'information veuillez telecharger mon cv
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="download('mourabit.doc')">Telecharger le CV</button>
+            <!-- <button mat-button>SHARE</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

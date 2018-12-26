@@ -1,0 +1,61 @@
+<div *ngIf="o | async; let o">
+  <mat-toolbar class="m-1" color="primary">
+    <mat-toolbar-row>
+      <span>Profile</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">contact_mail</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="row justify-content-center">
+
+
+    <mat-card color="primary" class="col-md-4 mr-2" style="height: 700px;padding: 0;border-radius: 0;">
+      <div class="col-md-12" style="padding: 0; padding-top: 3px;">
+        <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+          {{o.lastName}} {{o.username}}
+          <mat-icon class="float-right">account_circle</mat-icon>
+        </mat-card>
+        <mat-card class="m-1" style="padding: 4px;border-radius: 0; justify-content: center;">
+          <app-like [idOuvrier]="o.id"></app-like>
+          <app-count-comment [idOuvrier]="o.id"></app-count-comment>
+          <app-update-favorie [idOuvrier]="o.id"></app-update-favorie>
+        </mat-card>
+      </div>
+      <div class="col-md-12" style="padding: 0">
+        <app-img-display></app-img-display>
+      </div>
+      <!-- <div class="col-md-12" style="padding: 0"> -->
+      <mat-card-content class="text-center" style="padding: 15px;">
+        <hr>
+        <p class="card-text">Email : {{o.email}}</p>
+        <p class="card-text">Tel : {{o.tel}}</p>
+        <hr>
+        <p class="card-text">Metier : {{o.metier.nom}}</p>
+        <p class="card-text">Adresse : {{o.location.adresse}}</p>
+        <hr>
+        <p class="card-text">Quartier : {{o.location.quartier.nom}}</p>
+        <p class="card-text">Ville : {{o.location.quartier.ville.nom}}</p>
+        <hr>
+        <a mat-stroked-button [routerLink]="['/catalogues/list', o.id]">Catalogues</a>
+      </mat-card-content>
+    </mat-card>
+    <!-- card map -->
+    <mat-card class="col-md-7" style="padding: 14px;border-radius: 0; margin-bottom: 10px;">
+      <app-map (eventToParent)="setPosition($event)" [showMarker]="true" [lat]="o.location.lat" [lng]="o.location.lng"></app-map>
+      <hr>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span>Commentaire</span>
+          <span class="example-spacer"></span>
+          <mat-icon class="example-icon">insert_comment</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+      <app-comment [idOuvrier]="o.id"></app-comment>
+    </mat-card>
+  </div>
+
+
+  <!-- <app-catalogues-shared [idUser]="idUser"></app-catalogues-shared> -->
+</div>
+<!-- <ng-template #loading>Loading User Data...</ng-template> -->

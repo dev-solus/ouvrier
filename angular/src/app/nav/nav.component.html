@@ -1,0 +1,104 @@
+<mat-toolbar class="bg-dark text-white">
+  <mat-toolbar-row>
+    <button mat-button routerLink="catalogues/all">
+
+      <mat-icon>home</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-button routerLink="/shared/search">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-button routerLink="/home">
+      <mat-icon>info</mat-icon>
+      <!-- &nbsp;A propos -->
+    </button>
+    <!-- <button mat-button routerLink="/shared/search">
+      <mat-icon>search</mat-icon>Contact
+    </button> -->
+    <!--  -->
+    <div *ngIf="isSignedIn(); else notconnected">
+      <!-- admin menu -->
+      <!-- <mat-toolbar *ngIf="isAdmin()"> -->
+      <button mat-icon-button [matMenuTriggerFor]="menu0" *ngIf="isAdmin()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu0="matMenu" class="p-1">
+        <button mat-menu-item routerLink="/admin/quartier" routerLinkActive="active">
+          <mat-icon>list</mat-icon>
+          <span>Quartier</span>
+        </button>
+        <button mat-menu-item routerLink="/admin/ville" routerLinkActive="active">
+          <mat-icon>list</mat-icon>
+          <span>Ville</span>
+        </button>
+        <button mat-menu-item routerLink="/admin/metier" routerLinkActive="active">
+          <mat-icon>list</mat-icon>
+          <span>Metier</span>
+        </button>
+        <button mat-menu-item routerLink="/edit-about" routerLinkActive="active">
+          <mat-icon>info</mat-icon>
+          <span>About</span>
+        </button>
+        <button mat-menu-item routerLink="/edit-contact" routerLinkActive="active">
+          <mat-icon>contact_mail</mat-icon>
+          <span>Contact</span>
+        </button>
+      </mat-menu>
+      
+      <button mat-flat-button  [matMenuTriggerFor]="menu" style="border-radius: 10%;">
+        <app-img-display [img]="userImg" width="32px" height="32px" radius="50%" widthProgressBar="15px"
+          heightProgressBar="3px" >
+        </app-img-display>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div *ngIf="isOuvrier()">
+          <button mat-menu-item [routerLink]="['/shared/ouvrier', session.userID()]" routerLinkActive="active">
+            <mat-icon>account_circle</mat-icon>
+            <span>{{userName()}}</span>
+          </button>
+          <button mat-menu-item routerLink="/catalogues/add" routerLinkActive="active">
+            <mat-icon>add</mat-icon>
+            <span>Ajouter un catalogue</span>
+          </button>
+          <button mat-menu-item [routerLink]="['/catalogues/list', session.userID()]" routerLinkActive="active">
+            <mat-icon>layers</mat-icon>
+            <span>Mes catalogue</span>
+          </button>
+        </div>
+        <button mat-menu-item routerLink="/shared/fav" routerLinkActive="active">
+          <mat-icon>apps</mat-icon>
+          <span>Mes favories </span>
+        </button>
+        <button mat-menu-item [routerLink]="['auth/compte',session.userID()]" routerLinkActive="active">
+          <mat-icon>apps</mat-icon>
+          <span>Paramètres du compte</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="" (click)="logOut()">
+          <mat-icon>clear</mat-icon>
+          <span>Déconnexion</span>
+        </button>
+      </mat-menu>
+    </div>
+    <!--  -->
+    <ng-template #notconnected>
+      <button mat-button class="example-icon" routerLink="auth/signin" routerLinkActive="active">
+        <mat-icon>vpn_key</mat-icon>
+      </button>
+      <!-- &nbsp;
+      <button mat-button class="example-icon" routerLink="auth/signup" routerLinkActive="active">
+        <mat-icon>add</mat-icon>
+        S'inscrire
+      </button> -->
+    </ng-template>
+    <!--  -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<!-- <div *ngIf="false">
+<mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+</div> -->
+<!-- {{isLoading | json}} -->

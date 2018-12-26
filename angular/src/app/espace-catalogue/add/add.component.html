@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="">
+    <div class="row justify-content-center">
+      <!-- childer of row -->
+      <div class="col-md-8 mb-2 mt-2 p-0">
+        <div class="card ">
+          <div class="card-header">Catalogue</div>
+          <div class="card-body">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Nom du catalogue</mat-label>
+              <input matInput formControlName="nom" placeholder="nom" required>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div formArrayName="articles" class="col-md-8 p-0">
+
+        <div *ngFor="let e of articles.controls; let i=index" [formGroupName]="i">
+          <div class="card mt-1">
+            <div class="card-body">
+              <div>
+                <mat-form-field class="col-md-11">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="description" required></textarea>
+                </mat-form-field>
+                <button mat-icon-button type="button" color="warn" class="float-right" (click)="deleteArticle(i)">
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+
+              <div class="text-center">
+                <!-- <img [src]="e.value.imageUrl" style="height: 150px; width: 150px;">
+                <input class="col text-center" type="file" accept="image/*" (change)="handleFileInput($event.target.files, i)">
+                <input type="hidden" formControlName="imageUrl"> -->
+
+                <app-img-upload [imgUrl]="e.value.imageUrl" [width]="250" [height]="250" (eventToParent)="getFileFromImgUpload($event)">
+
+                </app-img-upload>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <button mat-raised-button color="accent" class="col-md-12 mb-1 mt-1" [disabled]="!btnAddArticleActivated" type="button" (click)="addArticle()">
+          <mat-icon>add</mat-icon> Ajouter un article
+        </button>
+  
+        <button mat-raised-button color="primary" [disabled]="formValid" class="col-md-12 mt-2">Enregistrer</button>
+      </div>
+
+
+    </div>
+
+  </form>
+
+
+
+
+  <!-- <div class="row justify-content-center">
+      <div class="col-md-8 ">
+
+      </div>
+    </div> -->
+
+
+
+</div>
+
+<!-- {{myForm.value | json}} -->
+<!-- <h5>{{myForm.status | json}}</h5>
+<h5>{{btnAddArticleActivated | json}}</h5> -->
+<!-- <h5>{{articles.length | json}}</h5> -->
+<!-- <h5>{{images | json}}</h5> -->

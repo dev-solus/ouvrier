@@ -1,0 +1,73 @@
+<div class="row justify-content-center" style="min-height: calc(100vh - 240px);">
+  <div *ngFor="let o of catalogues">
+    <mat-card class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
+      <!-- <a [routerLink]="['/shared/ouvrier', o.idUser]"> -->
+        <ng-container *ngIf="o.articles; else elseTemplate">
+          <app-img-display [img]="o.articles[0].imageUrl" widthProgressBar="30px" heightProgressBar="5px"></app-img-display>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <app-img-display [img]="" widthProgressBar="30px" heightProgressBar="5px"></app-img-display>
+        </ng-template>
+        
+      <!-- </a> -->
+      <div *ngIf="o.idUser === session.userID() || session.userID() === 1" class="mt-1">
+        <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu0" style="position:absolute;right:2px;top:4px;">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu0="matMenu" class="p-1">
+          <button mat-menu-item [routerLink]="['/catalogues/detail', o.id]" color="accent">
+            <mat-icon>edit</mat-icon>
+            <span>Voire et modifier</span>
+          </button>
+          <button mat-menu-item color="warn" (click)="openDialog(o)">
+            <mat-icon>delete_forever</mat-icon>
+            <span>Supprimer</span>
+          </button>
+        </mat-menu>
+      </div>
+      <button mat-icon-button color="accent" [routerLink]="['/shared/ouvrier', o.idUser]" style="position:absolute;left:2px;top:4px;">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      <mat-card-content class="text-center" style="padding: 15px;">
+          <hr>
+          <p class="card-text">{{o.nom}}</p>
+          <hr>
+          <a mat-stroked-button [routerLink]="['/catalogues/detail', o.id]">Consulter</a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- <div class="row justify-content-center" style="min-height: calc(100vh - 240px);">
+  <div *ngFor="let o of catalogues">
+    <div class="polaroid m-3">
+      <div>
+
+        <a [routerLink]="['/shared/ouvrier', o.idUser]">
+          <app-img-display [img]="o.user.imageUrl" widthProgressBar="30px" heightProgressBar="5px"></app-img-display>
+        </a>
+        <div *ngIf="o.idUser === session.userID() || session.userID() === 1" class="mt-1">
+          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu0" style="position:absolute;right:2px;top:4px;">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu0="matMenu" class="p-1">
+            <button mat-menu-item [routerLink]="['/catalogues/detail', o.id]" color="accent">
+              <mat-icon>edit</mat-icon>
+              <span>Voire et modifier</span>
+            </button>
+            <button mat-menu-item color="warn" (click)="openDialog(o)">
+              <mat-icon>delete_forever</mat-icon>
+              <span>Supprimer</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class="container">
+        <p>Hardanger, Norway</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<mat-paginator class="alert alert-warning p-0" [length]="resultsLength" [pageSizeOptions]="[6, 10, 15, 20]"
+  showFirstLastButtons></mat-paginator>

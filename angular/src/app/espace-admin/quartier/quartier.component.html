@@ -1,0 +1,30 @@
+<form [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+  <div class="example-container">
+    <!-- id -->
+    <input type="hidden" formControlName="id">
+    <!-- Nom -->
+    <mat-form-field appearance="standard">
+      <mat-label>Quartier</mat-label>
+      <input matInput formControlName="nom" placeholder="Quartier" required>
+    </mat-form-field>
+    &nbsp;
+    <!-- select Ville -->
+    <mat-form-field color="primary">
+        <mat-label>Ville</mat-label>
+        <mat-select placeholder="Ville" formControlName="idVille" >
+          <mat-option value="-1">...</mat-option>
+          <mat-option *ngFor="let o of villes" [value]="o.id">{{o.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <!-- valider montant -->
+    &nbsp;
+    <button mat-raised-button [disabled]="!myForm.valid" >Enregistrer</button>
+    &nbsp;
+    <button mat-raised-button type="reset" >Annuler</button>
+  </div>
+</form>
+
+<app-ltable [columnDefs]="columnDefs" [displayedColumns]="displayedColumns" [serviceData]="serviceData" (eventToParent)="edit($event)"></app-ltable>
+<!--
+<h5>{{myForm.value | json}}</h5> 
+<h5>{{myForm.status | json}}</h5>  -->

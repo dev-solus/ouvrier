@@ -1,0 +1,137 @@
+<!-- <mat-grid-list cols="2">
+  <mat-grid-tile> -->
+<div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" >
+    <div class="row justify-content-center">
+      <mat-card class="col-md-5 m-1">
+        <div class="example-container">
+          <!-- id -->
+          <input type="hidden" formControlName="id">
+          <!-- Type -->
+          <mat-form-field color="primary">
+            <mat-label>Type</mat-label>
+            <mat-select placeholder="Type" formControlName="type" (selectionChange)="typeChange($event.value)">
+              <mat-option value="-1">...</mat-option>
+              <mat-option value="simple">Adhérent</mat-option>
+              <mat-option value="ouvrier">Ouvrier</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!--select Metier -->
+          <mat-form-field color="primary">
+            <!-- *ngIf="type.value === 'ouvrier'" -->
+            <mat-label>Metier</mat-label>
+            <mat-select placeholder="metier" formControlName="idMetier">
+              <mat-option value="-1">...</mat-option>
+              <mat-option *ngFor="let o of metiers" [value]="o.id">{{o.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- user name -->
+          <mat-form-field appearance="standard">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="username" placeholder="username" required>
+          </mat-form-field>
+          <!-- lastname -->
+          <mat-form-field appearance="standard">
+            <mat-label>Prénom</mat-label>
+            <input matInput formControlName="lastName" placeholder="Prénom">
+          </mat-form-field>
+          <!-- date -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="dateNaissance" placeholder="Date de naissance">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <!-- email -->
+          <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email" required>
+          </mat-form-field>
+          <!-- password -->
+          <mat-form-field appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+      <mat-card class="col-md-5 m-1">
+        <div class="example-container">
+
+          <!-- civilite -->
+          <mat-form-field color="primary">
+            <mat-label>civilite</mat-label>
+            <mat-select placeholder="Civilite" formControlName="civilite">
+              <mat-option value="-1">...</mat-option>
+              <mat-option value="m">Homme</mat-option>
+              <mat-option value="f">Femme</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- tel -->
+          <mat-form-field appearance="standard">
+            <mat-label>Tel</mat-label>
+            <input matInput formControlName="tel" placeholder="tel">
+          </mat-form-field>
+          <div class=" ">
+            <!-- <label for="">Choisir un image</label> -->
+            <!-- <img class="img-fluid d-block mb-3" [src]="o.imageUrl" style="height: 200px; width: 200px;">
+            <input class="form-control-file" type="file" accept="image/*" (change)="handleFileInput($event.target.files)"> -->
+
+            <app-img-upload [imgUrl]="o.imageUrl" [width]="250" [height]="250" (eventToParent)="getFileFromImgUpload($event)"></app-img-upload>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- form groupe adresse -->
+    <div class="row justify-content-center">
+      <mat-card class="col-md-5 m-1">
+        <div class="example-container" formGroupName="location">
+          <!-- id location -->
+          <input type="hidden" formControlName="id">
+          <!-- adresse -->
+          <mat-form-field appearance="standard">
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="adresse" placeholder="adresse">
+          </mat-form-field>
+          <!--select ville -->
+          <mat-form-field color="primary">
+            <mat-label>Ville</mat-label>
+            <mat-select placeholder="ville" (selectionChange)="villeChange($event.value)" [(value)]="idVille">
+              <mat-option value="-1">...</mat-option>
+              <mat-option *ngFor="let o of villes" [value]="o.id">{{o.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!--select  Quartier-->
+          <mat-form-field color="primary">
+            <mat-label>Quartier</mat-label>
+            <mat-select placeholder="Quartier" formControlName="idQuartier">
+              <mat-option value="-1">...</mat-option>
+              <mat-option *ngFor="let o of quartiers" [value]="o.id">{{o.nom}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- lat -->
+          <mat-form-field appearance="standard">
+            <mat-label>lat</mat-label>
+            <input matInput formControlName="lat" placeholder="lat">
+          </mat-form-field>
+          <!-- lng -->
+          <mat-form-field appearance="standard">
+            <mat-label>lng</mat-label>
+            <input matInput formControlName="lng" placeholder="lng">
+          </mat-form-field>
+        </div>
+      </mat-card>
+      <mat-card class="col-md-5 m-1">
+        <app-map (eventToParent)="setPosition($event)" [showMarker]="true" [lat]="this.o.location.lat" [lng]="this.o.location.lng"></app-map>
+      </mat-card>
+    </div>
+    <div class="row justify-content-center m-3">
+        <button mat-raised-button class="m-1" type="submit" color="primary" [disabled]="!myForm.valid" style="width: 40%;">Enregistrer</button>
+
+        <button mat-raised-button class="m-1" type="reset" style="width: 40%;">Annuler</button>
+    </div>
+  </form>
+</div>
+<!-- <h5>{{myForm.value | json}}</h5> 
+<h5>{{myForm.status | json}}</h5> -->

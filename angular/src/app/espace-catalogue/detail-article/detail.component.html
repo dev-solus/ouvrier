@@ -1,0 +1,102 @@
+<mat-card class="m-2" style="padding: 0;border-radius: 0;">
+  <div class="row">
+    <div class="col-md-5">
+      <app-img-display [img]="o.user.imageUrl" width="180px" height="180px"></app-img-display>
+    </div>
+    <div class="col-md-6 m-1">
+      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+        {{o.user.lastName}} {{o.user.username}}
+        <mat-icon class="float-right">account_circle</mat-icon>
+      </mat-card>
+      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+        {{o.user.email}}
+        <mat-icon class="float-right">email</mat-icon>
+      </mat-card>
+
+      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+        {{o.user.tel}}
+        <mat-icon class="float-right">contact_phone</mat-icon>
+      </mat-card>
+
+
+      <button mat-raised-button style="width: 100%;height: 50px;margin: 2px;border-radius: 0;" [routerLink]="['/shared/ouvrier', o.idUser]">
+        Plus d'info
+        <mat-icon>trending_flat</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+
+
+
+
+<div class="text-center">
+
+  <h3 class="mt-3 mb-2">Catalogue : {{o.nom}} </h3>
+  <button *ngIf="o.idUser === session.userID() || session.userID() === 1" mat-mini-fab (click)="openDialogForAddEdit(null)">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<h5 class="text-center mt-3">Les articles</h5>
+<div class="row justify-content-center">
+  <div *ngFor="let a of o.articles" class="m-1">
+    <!-- <div class="card">
+      <div class="card-header">
+        <div class="row">
+
+          <div class="mt-2 float-right" *ngIf="o.idUser === session.userID() || session.userID() === 1">
+            <button mat-icon-button [matMenuTriggerFor]="menu0">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu0="matMenu" class="p-1">
+              <button mat-menu-item color="warn" (click)="openDialogForAddEdit(a)">
+                <mat-icon>edit</mat-icon>
+                <span>Modifier</span>
+              </button>
+              <button mat-menu-item color="warn" (click)="openDialogForDelete(a)">
+                <mat-icon>delete_forever</mat-icon>
+                <span>Supprimer</span>
+              </button>
+            </mat-menu>
+          </div>
+          <h5 class="mt-3 mb-2 text-center">{{a.description}}</h5>
+        </div>
+
+      </div>
+      <app-img-display [img]="a.imageUrl" width="280px" height="250px"></app-img-display>
+    </div> -->
+
+    <mat-card class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
+      <mat-card-header class="">
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <h6 class="pt-3 pb-2">{{a.description}}</h6>
+        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+      </mat-card-header>
+
+
+      <div *ngIf="o.idUser === session.userID() || session.userID() === 1">
+        <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu0" style="position:absolute;right:4px;top:4px;">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu0="matMenu" class="p-1">
+          <button mat-menu-item color="warn" (click)="openDialogForAddEdit(a)">
+            <mat-icon>edit</mat-icon>
+            <span>Modifier</span>
+          </button>
+          <button mat-menu-item color="warn" (click)="openDialogForDelete(a)">
+            <mat-icon>delete_forever</mat-icon>
+            <span>Supprimer</span>
+          </button>
+        </mat-menu>
+      </div>
+      <app-img-display [img]="a.imageUrl" height="250px"></app-img-display>
+    </mat-card>
+
+
+  </div>
+</div>
+<!-- 
+<ks-modal-gallery [id]="1" [modalImages]="images"
+                    [plainGalleryConfig]="plainGalleryRow"></ks-modal-gallery> -->

@@ -1,0 +1,7 @@
+<div class="">
+  <img #img (error)="imgError(img)" [src]="imgUrl" class="image-responsive" [width]="width" [height]="height" style="width: 100%;">
+  <input hidden #imgInput type="file" accept="image/*" (change)="handleFileInput($event.target.files)">
+  <button mat-raised-button type="button" (click)="openInput(imgInput)" style="width: 100%">
+    choisir un photo {{fileName}}
+  </button>
+</div>

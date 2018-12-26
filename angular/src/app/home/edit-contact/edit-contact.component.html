@@ -1,0 +1,48 @@
+<mat-card class="m-1" style="border-radius: 0;">
+  <form [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+    <mat-form-field appearance="standard">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" placeholder="Nom" required>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- lastname -->
+    <mat-form-field appearance="standard">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="prenom" placeholder="Prénom">
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col-md-8">
+        <angular-editor formControlName="discriptionHTML" [config]="config"></angular-editor>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center p-3">
+          <app-img-upload [imgUrl]="o.imageUrl" [width]="250" [height]="250" (eventToParent)="getFileFromImgUpload($event)">
+          </app-img-upload>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div style="text-align: center;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!myForm.valid">Enregistrer</button>
+    </div>
+  </form>
+</mat-card>
+
+<!-- 
+<hr>
+
+<button (click)="sortBy('name')" class="btn btn-info">Sort by state name</button>
+<button (click)="sortBy('capital')" class="btn btn-info">Sort by state capital</button>
+
+<hr> -->
+
+
+<cdk-virtual-scroll-viewport class="list-container lg example-viewport" [itemSize]="52.5">
+  <div *cdkVirtualFor="let state of statesObservable | async;" class="">
+    <mat-card class="m-1" style="border-radius: 0;" (click)="edit(state)">
+      {{state.name}} {{state.capital}}
+      <mat-icon class="float-right">account_circle</mat-icon>
+    </mat-card>
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,16 @@
+<form [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+  <div class="example-container">
+    <!-- id -->
+    <input type="hidden" formControlName="id">
+    <!-- Nom -->
+    <mat-form-field appearance="standard">
+      <mat-label>Metier</mat-label>
+      <input matInput formControlName="nom" placeholder="Nom" required>
+    </mat-form-field>
+    &nbsp;
+    <!-- valider montant -->
+    <button mat-raised-button [disabled]="!myForm.valid" >Enregistrer</button>
+  </div>
+</form>
+
+<app-ltable [columnDefs]="columnDefs" [displayedColumns]="displayedColumns" [serviceData]="serviceData" (eventToParent)="edit($event)"></app-ltable>

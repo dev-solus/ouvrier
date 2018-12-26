@@ -1,0 +1,25 @@
+<p>
+  test works!
+</p>
+
+<form [formGroup]="myForm" (ngSubmit)="submit(myForm)" class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="nom">
+  </mat-form-field>
+
+  <!-- <mat-form-field>
+    <input matInput placeholder="imgUrl" formControlName="imgUrl">
+  </mat-form-field> -->
+  <div class="col-md-6">
+    
+    <app-img-upload (eventToParent)="getFileFromImgUpload($event)"></app-img-upload>
+  </div>
+
+  <button mat-raised-button type="submit">Submit</button>
+</form>
+
+
+
+{{display | json}}
+
+<app-img-display [img]="imgUrl"></app-img-display>

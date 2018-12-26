@@ -1,0 +1,50 @@
+<div class="marge">
+  <br>
+  <mat-form-field>
+    <input matInput #filter placeholder="Filter" (keyup)="initList($event.target.value)">
+  </mat-form-field>
+  <button mat-raised-button [disabled]="(filter.value === '' )" (click)="search(filter.value)">Recherche</button>
+  <br>
+  <br>
+  <div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="dataSourceHandler.isLoadingResults || dataSourceHandler.isRateLimitReached">
+      <mat-spinner *ngIf="dataSourceHandler.isLoadingResults"></mat-spinner>
+      <div class="example-rate-limit-reached" *ngIf="dataSourceHandler.isRateLimitReached">
+        GitHub's API rate limit has been reached. It will be reset in one minute.
+      </div>
+    </div>
+
+    <div class="example-table-container">
+      <table mat-table #table [dataSource]="dataSource" aria-label="Elements" matSort [matSortActive]="columnDefs[0].columnDef"
+        matSortDisableClear matSortDirection="asc">
+        <!-- columnDefs have definition for both  ColumnDef and HeaderCellDef get dynamacly-->
+        <ng-container *ngFor='let column of columnDefs' [cdkColumnDef]='column.columnDef'>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column.headName}}</th>
+
+          <td mat-cell *matCellDef="let row">
+            {{ row[column.columnDef] }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator 
+        [length]="dataSourceHandler.resultsLength" 
+        [pageIndex]="0" 
+        [pageSize]="5" 
+        [pageSizeOptions]="[5, 25, 50, 100, 250]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+
+  <!-- <p>Export as XLSX by clicking the below button</p>
+
+  <a mat-raised-button routerLink="." color="warn" (click)="exportAsXLSX()">
+    <i class="material-icons" style=" max-width: 200px;">
+      move_to_inbox
+    </i>
+  </a> -->
+</div>

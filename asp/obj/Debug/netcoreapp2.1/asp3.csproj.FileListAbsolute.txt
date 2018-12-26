@@ -1,0 +1,14 @@
+D:\dev\ouvrier\asp3\bin\Debug\netcoreapp2.1\asp3.deps.json
+D:\dev\ouvrier\asp3\bin\Debug\netcoreapp2.1\asp3.runtimeconfig.json
+D:\dev\ouvrier\asp3\bin\Debug\netcoreapp2.1\asp3.runtimeconfig.dev.json
+D:\dev\ouvrier\asp3\bin\Debug\netcoreapp2.1\asp3.dll
+D:\dev\ouvrier\asp3\bin\Debug\netcoreapp2.1\asp3.pdb
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.csprojAssemblyReference.cache
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.csproj.CoreCompileInputs.cache
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.RazorAssemblyInfo.cache
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.RazorAssemblyInfo.cs
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.AssemblyInfoInputs.cache
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.AssemblyInfo.cs
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.RazorTargetAssemblyInfo.cache
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.dll
+D:\dev\ouvrier\asp3\obj\Debug\netcoreapp2.1\asp3.pdb

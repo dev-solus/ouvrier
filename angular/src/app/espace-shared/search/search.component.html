@@ -1,0 +1,104 @@
+<mat-card class="row justify-content-center m-3">
+  <!-- <ul class="list-group mt-2">
+    <li class="list-group-item list-group-item-light  mb-2">Profile -->
+  <div class="ml-5">
+
+
+    <form [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+      <!--select ville -->
+      <mat-form-field color="primary" class="m-2">
+        <mat-label>Ville</mat-label>
+        <mat-select placeholder="ville" formControlName="idVille" (selectionChange)="villeChange($event.value)">
+          <mat-option value="-1">...</mat-option>
+          <mat-option *ngFor="let o of villes" [value]="o.id">{{o.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--select  Quartier-->
+      <mat-form-field color="primary" class="m-2">
+        <mat-label>Quartier</mat-label>
+        <mat-select placeholder="Quartier" formControlName="idQuartier">
+          <mat-option value="-1">...</mat-option>
+          <mat-option *ngFor="let o of quartiers" [value]="o.id">{{o.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field color="primary" class="m-2">
+        <!-- *ngIf="type.value === 'ouvrier'" -->
+        <mat-label>Metier</mat-label>
+        <mat-select placeholder="metier" formControlName="idMetier">
+          <mat-option value="-1">...</mat-option>
+          <mat-option *ngFor="let o of metiers" [value]="o.id">{{o.nom}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- valider -->
+      <button mat-raised-button class="m-2" [disabled]="!myForm.valid">Rechercher</button>
+    </form>
+  </div>
+  <!-- </li>
+  </ul> -->
+</mat-card>
+<!-- {{myForm.value | json}} {{myForm.status | json}} -->
+<hr>
+<mat-toolbar class="m-1" color="primary">
+  <mat-toolbar-row>
+    <span>Recherche des ouvrier/artisant que vous intéresse et les plus proche aussi</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">search</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="row justify-content-center m-1">
+  <div *ngIf="users.length === 0">
+    <!-- yes we know so go to home and cry there no here -->
+    <!-- <h6>
+      Fait votre recherche des ouvrier ou artisant que vous intéresse et les plus proche aussi
+    </h6> -->
+
+    <br>
+  </div>
+  <div class="col-md-7">
+    <div *ngFor="let o of users">
+      <mat-card class="m-2  pt-2 pb-2" style="padding: 0;border-radius: 0;">
+        <!-- <div class="row"> -->
+          <!-- <div class="col-md-12">
+            <app-img-display width="42px" height="42px"  [img]="o.imageUrl"></app-img-display>
+          </div> -->
+          <div class="col-md-12">
+            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+              {{o.username}} {{o.lastName}}
+              <mat-icon class="float-right">account_circle</mat-icon>
+            </mat-card>
+            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+              {{o.metier.nom}}
+              <mat-icon class="float-right">work</mat-icon>
+            </mat-card>
+            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+              {{o.location.quartier.nom}} / {{o.location.quartier.ville.nom}}
+              <mat-icon class="float-right">home</mat-icon>
+            </mat-card>
+            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+                <app-like [idOuvrier]="o.id"></app-like>
+                <app-count-comment [idOuvrier]="o.id"></app-count-comment>
+                <app-update-favorie [idOuvrier]="o.id"></app-update-favorie>
+              </mat-card>
+            <button mat-raised-button [color]="(o.id !== idUserColorIndicateur)? '' : 'primary'" 
+            style="width: 100%;height: 50px;margin: 2px;border-radius: 0;" [routerLink]="['/shared/ouvrier', o.id]">
+              Plus d'info
+              <mat-icon>trending_flat</mat-icon>
+            </button>
+          </div>
+        <!-- </div> -->
+      </mat-card>
+
+    </div>
+  </div>
+  <!--  -->
+
+  <!--  -->
+  <div class="col-md-5">
+    <!-- map -->
+    <div class="card">
+      <app-map (eventToParent2)="setUser($event)" [markers]="locations" [lat]="33.92" [lng]="-6.88"></app-map>
+      <!-- (eventToParent)="setPosition($event)" -->
+      <!-- [lat]="o.idLocationNavigation.lat" [lng]="o.idLocationNavigation.lng" -->
+    </div>
+  </div>
+</div>

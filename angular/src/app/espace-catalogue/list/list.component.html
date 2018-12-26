@@ -1,0 +1,10 @@
+<div class="mt-3 mb-2 text-center" *ngIf="idUser.toString() === actuelUser.toString()">
+  <h3>Mes Catalogue</h3>
+  <button mat-fab routerLink="/catalogues/add" routerLinkActive="active">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<app-catalogues-shared [idUser] = "idUser"></app-catalogues-shared>
+<!-- {{idUser}}
+{{actuelUser}} -->
+<!-- [routerLink]="['/detail-recette',recette.id] -->

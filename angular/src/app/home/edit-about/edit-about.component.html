@@ -1,0 +1,32 @@
+<mat-card class="example-card col-md-12 m-3">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image">
+      </div>
+      <mat-card-title>Khadija</mat-card-title>
+      <mat-card-subtitle>El Haddaoui</mat-card-subtitle> -->
+    <!-- <header class="header">
+          <h1>AngularEditor</h1>
+          <p>Native WYSIWYG editor for Angular 6+</p>    
+        </header> -->
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content>
+    <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+  </mat-card-content>
+  <mat-card-actions>
+    <div style="text-align: center;">
+      <button mat-raised-button (click)="submit()">Entrgistrer</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+
+
+
+
+
+
+<!-- <div class="html">
+    {{ htmlContent }}
+  </div> -->
+<br>

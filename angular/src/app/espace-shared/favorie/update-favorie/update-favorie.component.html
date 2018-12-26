@@ -1,0 +1,11 @@
+<!-- <button [disabled]="idOuvrier === session.userID() || !session.IsloggedIn()" mat-icon-button color="warn" [ngClass]="styleBtn"
+  (click)="addToCarnet()">
+  <mat-icon>dns</mat-icon>
+</button> -->
+
+<button mat-icon-button [color]="styleBtn" [disabled]="idOuvrier === session.userID() || !session.IsloggedIn()"
+  matTooltip="Ajouter aux favories" (click)="addToCarnet()">
+  <mat-icon>dns</mat-icon>
+
+  <!-- <mat-icon [matBadge]="totalLike" matBadgeColor="" (click)="jaime()">favorite</mat-icon> -->
+</button>

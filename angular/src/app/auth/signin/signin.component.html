@@ -1,0 +1,25 @@
+<div class="row m-5">
+    <div class="col-md-3"></div>
+    <form [formGroup]="myForm" (ngSubmit)="doSignIn(myForm)" class="col-md-6 card">
+        <h5 class="text-center mt-3">Bienvenue ! Veuillez vous identifier.</h5>
+        <hr>
+        <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email" required>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password">
+        </mat-form-field>
+        <div class="text-center text-danger" *ngIf = "error"> email ou mot pass incorrecte</div>
+        <hr>
+        <button mat-raised-button color="primary" [disabled]="!myForm.valid">
+            Connexion
+        </button>
+        <hr>
+        <button mat-raised-button class="bg-success text-white mb-3" routerLink="/auth/signup" routerLinkActive="active">
+            Inscrivez-vous maintenant
+        </button>
+    </form>
+    <div class="col-md-3"></div>
+</div>

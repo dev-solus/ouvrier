@@ -1,0 +1,18 @@
+
+  <mat-card>
+    <form [formGroup]="myForm" (ngSubmit)="submit(myForm)" class="">
+      <mat-form-field class="col-md-11">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+      </mat-form-field>
+
+      <br>
+      <div class="text-center">
+        <app-img-upload [imgUrl]="o.imageUrl" [width]="250" [height]="250" (eventToParent)="getFileFromImgUpload($event)">
+
+        </app-img-upload>
+      </div>
+      <br>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!myForm.valid || !isImageUploaded" class="col-md-12 mt-2">Enregistrer</button>
+    </form>
+  </mat-card>

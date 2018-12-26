@@ -1,0 +1,51 @@
+<!-- <mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field> -->
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="dataSourceHandler.isLoadingResults || dataSourceHandler.isRateLimitReached">
+    <mat-spinner *ngIf="dataSourceHandler.isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="dataSourceHandler.isRateLimitReached">
+      GitHub's API rate limit has been reached. It will be reset in one minute.
+    </div>
+  </div>
+
+  <div class="example-table-container">
+    <table mat-table #table [dataSource]="dataSource" aria-label="Elements" matSort [matSortActive]="columnDefs[0].columnDef"
+      matSortDisableClear matSortDirection="asc">
+      <!-- columnDefs have definition for both  ColumnDef and HeaderCellDef get dynamacly-->
+      <ng-container *ngFor='let column of columnDefs' [cdkColumnDef]='column.columnDef'>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column.headName}}</th>
+          <!-- <th *ngIf="column.columnDef === 'option'" mat-header-cell *matHeaderCellDef mat-sort-header>{{column.headName}}</th> -->
+
+        <td mat-cell *matCellDef="let row">
+            {{ row[column.columnDef] }}
+          <!-- Option -->
+          <div *ngIf="column.columnDef === 'option'">
+            <div class="button-row">
+              <button mat-mini-fab color="primary" (click)="put(row)">
+                <i class="material-icons">create</i>
+              </button>
+              &nbsp;
+              <button mat-mini-fab color="warn" (click)="delete(row)">
+                <i class="material-icons">delete_sweep</i>
+              </button>
+            </div>
+          </div>
+        </td>
+
+        <!-- <md-header-cell *cdkHeaderCellDef> {{column.headName}} </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row[column.columnDef]}} </md-cell> -->
+      </ng-container>
+
+      <!-- option Definition -->&nbsp;
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator [length]="dataSourceHandler.resultsLength" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 25, 50, 100, 250]">
+    </mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<!-- <h5>Form value: {{ commentForm.value | json }}</h5>
+<h5>Form status: {{ commentForm.status | json }}</h5> -->
+<!-- <ul class="list-group"> -->
+<!-- {{ comments | json }} -->
+<!-- {{comments | json}} -->
+<div *ngFor="let c of comments; let i=index">
+  <!-- {{c.description | json}} -->
+  <div class="media mt-3 shadow-textarea">
+    <!-- <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" [src]="c.user.imageUrl" alt="Generic placeholder image"> -->
+    <app-img-display [img]="c.user.imageUrl" width="42px" height="42px" radius="50%" style="float: left;"
+      widthProgressBar="30px" heightProgressBar="5px"></app-img-display>
+    <div class="media-body">
+      <h5 class="mt-0 font-weight-bold blue-text">{{c.user.nom}}</h5>
+      <div class="form-group basic-textarea rounded-corners">
+        <!-- <textarea class="form-control bg-white input" [(ngModel)]="c.comment" rows="3" cols="10" [readonly]="isReadonly">
+          </textarea> -->
+
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="c.comment" [readonly]="isReadonly"></textarea>
+        </mat-form-field>
+
+        <div class="btn-group float-right">
+          <div *ngIf="getMyCommnent(c.idUser)">
+            <button mat-icon-button color="primary" type="button" (click)="edit(c)">
+              <mat-icon>create</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" type="button" (click)="delete(c.id)">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+            <!-- <button type="button" class="btn btn-light " (click)="edit(c)" style="border-radius: 4.75rem;">edit</button>
+            <button type="button" class="btn btn-light " (click)="delete(c.id)" style="border-radius: 4.75rem;">delete</button> -->
+          </div>
+        </div>
+        <!--  -->
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- [commentCount]="commentCount" -->
+<!-- </ul> -->
+<!-- <ul class="list-group">
+    <div *ngFor="let c of recetteActuel.commentaires; let i=index" >
+      <div class="textarea-container">
+        <textarea class="form-control bg-white input" [(ngModel)]="c.description" rows="3" cols="10" [readonly]="isReadonly">
+        </textarea>
+
+        <div class="btn-group pull-right">
+          <div *ngIf="getMyCommnent(c.idChef)">
+            <button type="button" class="btn btn-light "  (click)="edit(c)" style="border-radius: 4.75rem;"><i class="fa fa-pencil"></i></button>
+            <button type="button" class="btn btn-light "  (click)="delete(c.id)"style="border-radius: 4.75rem;"><i class="fa fa-trash-o"></i></button>
+          </div>
+
+        </div>
+      <app-sous-comment [comments]="c.sousCommentaires" [commentActuel]="c"></app-sous-comment>
+      <br><br>
+      </div>
+    </div>
+</ul> -->
+<br>
+
+<!-- <form [formGroup]="commentForm" >
+    <textarea class="form-control" rows="3" formControlName="description"></textarea>
+    <br>
+  <button type="button" (click)="onSubmit(commentForm)" class="btn btn-success btn-md pull-right">Commenter</button>
+</form> -->
+<!-- @class = "form-control bg-light", @readonly= "readonly" -->
+<hr>
+<div class="media mt-3 shadow-textarea">
+  <app-img-display [img]="session.userImg()" width="50px" height="50px" radius="50%" style="float: left;"
+    widthProgressBar="30px" heightProgressBar="5px"></app-img-display>
+  <!-- <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" [src]="session.userImg()" alt="Generic placeholder image"> -->
+  <div class="media-body">
+    <h5 class="mt-0 font-weight-bold blue-text">{{session.userName()}}</h5>
+    <div class="form-group basic-textarea rounded-corners">
+      <form [formGroup]="myForm">
+
+        <!-- <textarea class="form-control" rows="3" formControlName="comment"></textarea> -->
+
+
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="comment"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="button" (click)="onSubmit(myForm)" [disabled]="!session.IsloggedIn()">Commenter</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- {{ myForm.value | json }} --> 

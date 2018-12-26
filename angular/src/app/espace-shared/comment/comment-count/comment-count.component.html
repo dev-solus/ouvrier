@@ -1,0 +1,9 @@
+<!-- <button [disabled]="!session.IsloggedIn()" type="button" [ngClass]="styleBtn" class="btn fa fa-comment-o">
+  &nbsp; {{countComment}}
+</button> -->
+
+
+<button mat-icon-button [color]="styleBtn" [disabled]="!session.IsloggedIn()" type="button">
+  <mat-icon [matBadge]="countComment" matBadgeColor="">insert_comment</mat-icon>
+<!-- <mat-icon [matBadge]="totalLike" matBadgeColor="" (click)="jaime()">favorite</mat-icon> -->
+</button>
