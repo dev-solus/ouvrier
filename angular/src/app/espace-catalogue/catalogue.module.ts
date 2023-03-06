@@ -18,32 +18,26 @@ import { SharedModule } from '../espace-shared/shared.module';
 import { AllComponent } from './all/all.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CatalogueRoutingModule,
-    MatModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UtilsModule,
-    SharedModule,
-  ],
-  declarations: [
-    AddComponent,
-    EditComponent,
-    DetailComponent,
-    DeleteComponent,
-    ListComponent,
-    CataloguesSharedComponent,
-    EditArticleComponent,
-    DeleteArticleComponent,
-    AddArticleComponent,
-    AllComponent,
-  ],
-  entryComponents: [
-    DeleteComponent,
-    DeleteArticleComponent,
-    AddArticleComponent,
-    EditArticleComponent,
-  ],
+    imports: [
+        CommonModule,
+        CatalogueRoutingModule,
+        MatModule,
+        FormsModule,
+        ReactiveFormsModule,
+        UtilsModule,
+        SharedModule,
+    ],
+    declarations: [
+        AddComponent,
+        EditComponent,
+        DetailComponent,
+        DeleteComponent,
+        ListComponent,
+        CataloguesSharedComponent,
+        EditArticleComponent,
+        DeleteArticleComponent,
+        AddArticleComponent,
+        AllComponent,
+    ]
 })
 export class CatalogueModule { }
