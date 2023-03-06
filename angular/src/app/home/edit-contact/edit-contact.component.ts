@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { HomeService } from '../home.service';
 import { BehaviorSubject } from 'rxjs';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-contact',
@@ -13,7 +13,7 @@ export class EditContactComponent implements OnInit {
   name = 'Angular 6';
   htmlContent = '';
   o = new Contact();
-  public myForm: FormGroup;
+  public myForm: UntypedFormGroup;
   config: AngularEditorConfig = this._getConfig;
 
   fixedSizeData = Array(10000).fill(30);
@@ -31,7 +31,7 @@ export class EditContactComponent implements OnInit {
   file: File;
   isImageUploaded: boolean;
 
-  constructor(private fb: FormBuilder, private service: HomeService) { }
+  constructor(private fb: UntypedFormBuilder, private service: HomeService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -70,7 +70,7 @@ export class EditContactComponent implements OnInit {
     // );
   }
 
-  submit(myForm: FormGroup) {
+  submit(myForm: UntypedFormGroup) {
     const obj: Contact = myForm.value;
     console.log(obj);
     // if (this.htmlContent) {

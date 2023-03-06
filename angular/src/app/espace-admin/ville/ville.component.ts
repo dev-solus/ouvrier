@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { VilleService } from '../ville.service';
 import { TableSharedComponent } from '../table-shared/table-shared.component';
 import { Ville } from '../../Models';
@@ -12,7 +12,7 @@ import { Ville } from '../../Models';
 export class VilleComponent implements OnInit {
 
   // type_navire_list: string[];
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   o: Ville = new Ville();
   columnDefs = [
     { columnDef: 'id', headName: 'id' },
@@ -27,7 +27,7 @@ export class VilleComponent implements OnInit {
   //
   isEdit = false;
   //
-  constructor(private fb: FormBuilder, public serviceData: VilleService) { }
+  constructor(private fb: UntypedFormBuilder, public serviceData: VilleService) { }
 
   ngOnInit() {
     this.createForm();
@@ -47,7 +47,7 @@ export class VilleComponent implements OnInit {
     });
   }
 
-  submit(o: FormGroup) {
+  submit(o: UntypedFormGroup) {
     console.log('submit = ', o.value);
     const obj = o.value as Ville;
     if (!this.isEdit) {

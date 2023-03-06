@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TableSharedComponent } from '../table-shared/table-shared.component';
 import { QuartierService } from '../quartier.service';
 import { Quartier, Ville } from '../../Models';
@@ -11,7 +11,7 @@ import { Quartier, Ville } from '../../Models';
   styleUrls: ['./quartier.component.css']
 })
 export class QuartierComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   o: Quartier = new Quartier();
   villes: Ville[] = [];
   columnDefs = [
@@ -28,7 +28,7 @@ export class QuartierComponent implements OnInit {
   //
   isEdit = false;
   //
-  constructor(public dialog: MatDialog, private fb: FormBuilder, public serviceData: QuartierService) { }
+  constructor(public dialog: MatDialog, private fb: UntypedFormBuilder, public serviceData: QuartierService) { }
 
   ngOnInit() {
     // this.type_navire_list = this.storageService.getList();
@@ -52,7 +52,7 @@ export class QuartierComponent implements OnInit {
     });
   }
 
-  submit(o: FormGroup) {
+  submit(o: UntypedFormGroup) {
     console.log('submit = ', o.value);
     const obj = o.value as Quartier;
     if (!this.isEdit) {

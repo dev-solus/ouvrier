@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { SearchService } from './search.service';
 import { Metier, Ville, Quartier, User, Location } from '../../Models';
 import { Router } from '../../../../node_modules/@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '../../../../node_modules/@angular/router';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   o: DataSearch;
   metiers: Metier[] = [];
   villes: Ville[] = [];
@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   //
   styleBtn = 'bg-light';
   idUserColorIndicateur = 0;
-  constructor(private fb: FormBuilder, public service: SearchService
+  constructor(private fb: UntypedFormBuilder, public service: SearchService
     , private route: Router) {
   }
 
@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  submit(o: FormGroup) {
+  submit(o: UntypedFormGroup) {
 
     if (o.value.idQuartier === '' || o.value.idQuartier === '-1') {
       o.value.idQuartier = 0;
@@ -63,8 +63,8 @@ export class SearchComponent implements OnInit {
   }
 
   // when the user change ville thelist of quatierwill initialzed
-  get quartier(): FormControl {
-    return this.myForm.get('idQuartier') as FormControl;
+  get quartier(): UntypedFormControl {
+    return this.myForm.get('idQuartier') as UntypedFormControl;
   }
 
   villeChange(idVille: number) {

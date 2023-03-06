@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DeleteArticleComponent } from '../delete-article/delete-article.component';
 import { ArticleService } from '../../article.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Article } from 'src/app/Models';
 import { Observable } from 'rxjs';
 
@@ -12,13 +12,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-article.component.scss']
 })
 export class AddArticleComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   // idCatalogue: number;
   o: Article = new Article;
   file: File;
   isImageUploaded = false;
 
-  constructor(public dialogRef: MatDialogRef<DeleteArticleComponent>, private fb: FormBuilder
+  constructor(public dialogRef: MatDialogRef<DeleteArticleComponent>, private fb: UntypedFormBuilder
     , @Inject(MAT_DIALOG_DATA) public data: DataDialog, private service: ArticleService) {
 
   }
@@ -46,7 +46,7 @@ export class AddArticleComponent implements OnInit {
     });
   }
 
-  submit(o: FormGroup) {
+  submit(o: UntypedFormGroup) {
     console.log('submit = ', o.value);
     const obj = o.value as Article;
     if (this.o.id === 0) {

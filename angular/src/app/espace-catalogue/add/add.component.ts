@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { CatalogueService } from '../catalogue.service';
 import { Catalogue, Article } from '../../Models';
 import { SessionService } from '../../auth/session.service';
@@ -17,11 +17,11 @@ export class AddComponent implements OnInit, OnDestroy {
   @Input() o: Catalogue = new Catalogue();
   a: Article = new Article();
   btnAddArticleActivated = false;
-  public myForm: FormGroup;
+  public myForm: UntypedFormGroup;
   @Output() eventToParent = new EventEmitter<any>();
   files: File[] = [];
 
-  constructor(public dialog: MatDialog, private session: SessionService, private fb: FormBuilder
+  constructor(public dialog: MatDialog, private session: SessionService, private fb: UntypedFormBuilder
     , private catalogueService: CatalogueService, private router: Router) {
     this.createForm();
   }
@@ -61,11 +61,11 @@ export class AddComponent implements OnInit, OnDestroy {
     });
   }
 
-  get articles(): FormArray {
-    return this.myForm.get('articles') as FormArray;
+  get articles(): UntypedFormArray {
+    return this.myForm.get('articles') as UntypedFormArray;
   }
 
-  formGroupeArticle(): FormGroup {
+  formGroupeArticle(): UntypedFormGroup {
     return this.fb.group({
       id: 0,
       description: [this.a.description, Validators.required],
@@ -74,12 +74,12 @@ export class AddComponent implements OnInit, OnDestroy {
   }
 
   addArticle() {
-    (<FormArray>this.myForm.get('articles')).push(this.formGroupeArticle());
+    (<UntypedFormArray>this.myForm.get('articles')).push(this.formGroupeArticle());
     this.btnAddArticleActivated = false;
   }
 
 
-  onSubmit(myForm: FormGroup) {
+  onSubmit(myForm: UntypedFormGroup) {
     const obj: Catalogue = myForm.value;
 
     obj.articles.forEach((art, i) => {

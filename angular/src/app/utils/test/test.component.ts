@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test',
@@ -7,13 +7,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   o: Obj = new Obj();
   display: any = 'waiting ...';
   file: File;
   // this variable needed for this component children;
   imgUrl = 'users/m3alam.jpg';
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -32,7 +32,7 @@ export class TestComponent implements OnInit {
   //   // console.log(this.imgUrl);
   // }
 
-  submit(e: FormGroup) {
+  submit(e: UntypedFormGroup) {
     this.display = e.value;
   }
 

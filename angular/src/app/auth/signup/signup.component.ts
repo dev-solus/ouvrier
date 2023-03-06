@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormArray, UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 import { User, Location, Ville, Metier, Quartier } from '../../Models';
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   @Input() id = 0;
   @Input() o: User = new User();
   // a: Location = new Location();
-  public myForm: FormGroup;
+  public myForm: UntypedFormGroup;
   metiers: Metier[] = [];
   villes: Ville[] = [];
   quartiers: Quartier[] = [];
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   hide = true;
   file: File;
   imgName = '';
-  constructor(private signupService: AuthService, private fb: FormBuilder
+  constructor(private signupService: AuthService, private fb: UntypedFormBuilder
     , private router: Router, public session: SessionService) {
     this.createForm();
   }
@@ -88,7 +88,7 @@ export class SignupComponent implements OnInit {
     }); // end user
   }
 
-  onSubmit(myForm: FormGroup) {
+  onSubmit(myForm: UntypedFormGroup) {
     const obj: User = myForm.value;
     console.log(obj);
     obj.role = this.defineRole(obj);
@@ -165,11 +165,11 @@ export class SignupComponent implements OnInit {
   }
   //
   get latitude() {
-    return this.myForm.get('location').get('lat') as FormControl;
+    return this.myForm.get('location').get('lat') as UntypedFormControl;
   }
 
   get longitude() {
-    return this.myForm.get('location').get('lng') as FormControl;
+    return this.myForm.get('location').get('lng') as UntypedFormControl;
   }
 
   setLocation(lat: number, lng: number) {
@@ -182,8 +182,8 @@ export class SignupComponent implements OnInit {
   }
 
   // when the user change ville thelist of quatierwill initialzed
-  get quartier(): FormControl {
-    return this.myForm.get('location').get('idQuartier') as FormControl;
+  get quartier(): UntypedFormControl {
+    return this.myForm.get('location').get('idQuartier') as UntypedFormControl;
   }
 
   villeChange(idVille: number) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenInterface } from '../TokenInterface';
 import { AuthService } from '../auth.service';
@@ -10,11 +10,11 @@ import { SessionService } from '../session.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  public myForm: FormGroup;
+  public myForm: UntypedFormGroup;
   error = false;
   model: LoginDto = { email: 'dj-m2x@hotmail.com', password: '12345678*'};
 
-  constructor(private signinService: AuthService, public session: SessionService, private fb: FormBuilder, public router: Router) {
+  constructor(private signinService: AuthService, public session: SessionService, private fb: UntypedFormBuilder, public router: Router) {
   }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  doSignIn(chefForm: FormGroup) {
+  doSignIn(chefForm: UntypedFormGroup) {
     this.signinService.authenticate(chefForm.value as LoginDto)
       .subscribe(
         (response: TokenInterface ) => {

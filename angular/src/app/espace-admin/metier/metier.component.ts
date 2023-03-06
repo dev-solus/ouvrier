@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MetierService } from '../metier.service';
 import { Metier } from '../../Models';
 import { TableSharedComponent } from '../table-shared/table-shared.component';
@@ -12,7 +12,7 @@ import { TableSharedComponent } from '../table-shared/table-shared.component';
 export class MetierComponent implements OnInit {
 
   // type_navire_list: string[];
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   o: Metier = new Metier();
   columnDefs = [
     { columnDef: 'id', headName: 'id' },
@@ -27,7 +27,7 @@ export class MetierComponent implements OnInit {
   //
   isEdit = false;
   //
-  constructor(private fb: FormBuilder, public serviceData: MetierService) { }
+  constructor(private fb: UntypedFormBuilder, public serviceData: MetierService) { }
 
   ngOnInit() {
     this.createForm();
@@ -47,7 +47,7 @@ export class MetierComponent implements OnInit {
     });
   }
 
-  submit(o: FormGroup) {
+  submit(o: UntypedFormGroup) {
     console.log('submit = ', o.value);
     const obj = o.value as Metier;
     if (!this.isEdit) {

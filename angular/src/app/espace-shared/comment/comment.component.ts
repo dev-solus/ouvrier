@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { HubConnection } from '@aspnet/signalr';
 import { AppConfig } from '../../app.config';
 import { Commentaire, User } from '../../Models';
@@ -17,7 +17,7 @@ const API_URL = environment.hubUrl; // + 'Note'; // CommentHub
 export class CommentComponent implements OnInit {
   // this mate come from the outside. thankyou then
   @Input() idOuvrier: number;
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   comments: Commentaire[];
   o: Commentaire = new Commentaire();
   private connection: HubConnection;
@@ -26,7 +26,7 @@ export class CommentComponent implements OnInit {
   isReadonly = true;
   // isReplying = false;
 
-  constructor(private fb: FormBuilder, private commentService: CommentService,
+  constructor(private fb: UntypedFormBuilder, private commentService: CommentService,
     public session: SessionService/*, private noteService: NoteService*/) {
       // this.commentCount += 1;
   }
@@ -66,7 +66,7 @@ export class CommentComponent implements OnInit {
     return this.session.userID() === idUser;
   }
 
-  onSubmit(myForm: FormGroup) {
+  onSubmit(myForm: UntypedFormGroup) {
     const obj: Commentaire = myForm.value;
     // obj.idUser = this.session.userID();
     obj.user = this.session.user;
