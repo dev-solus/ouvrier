@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { AddArticleComponent } from './add-article/add-article.component';
-import { SessionService } from 'src/app/auth/session.service';
+import { SessionService } from 'app/auth/session.service';
 import { Observable } from 'rxjs';
 
 @Component({

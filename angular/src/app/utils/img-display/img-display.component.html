@@ -4,8 +4,8 @@
 
     </mat-progress-bar>
   </div> -->
-  <img (error)="imgError(im)" #im class="image-responsive" 
-  [ngStyle]="{'width': width, 'height': height, 'border-radius': radius, 'padding-right': paddingRight}">
+  <!-- <img (error)="imgError(im)" #im class="image-responsive" [ngStyle]="{'width': width, 'height': height, 'border-radius': radius, 'padding-right': paddingRight}"> -->
+  <img onerror="src='assets/not-found.png'" [src]="urlImage" class="image-responsive" [ngStyle]="{'width': width, 'height': height, 'border-radius': radius, 'padding-right': paddingRight}">
 </div>
 
 <!-- <div class="item" [ngStyle]="{'border-radius': radius, 'border': border}">
@@ -13,7 +13,7 @@
   <img (error)="imgError(im)" #im class="image-responsive" [ngStyle]="{'width': width, 'height': height, 'border-radius': radius, 'padding-right': paddingRight}">
   </ng-container>
   <ng-template #elseTemplate>
-    <img src="../../../assets/loading.gif" alt="Fallbackimage" class="image-responsive" 
+    <img src="../../../assets/loading.gif" alt="Fallbackimage" class="image-responsive"
     [ngStyle]="{'width': width, 'height': height, 'border-radius': radius}">
   </ng-template>
 </div> -->

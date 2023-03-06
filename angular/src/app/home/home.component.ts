@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { HomeService } from './home.service';
+import { environment } from 'environments/environment';
 
 const API_URL = environment.hubUrl + 'cv/';
 @Component({
@@ -20,7 +19,6 @@ export class HomeComponent implements OnInit {
   getFromApi() {
     this.service.get().subscribe(
       r => {
-        console.log(r);
         this.varHTML = r.aboutHTML;
       },
       e => console.log(e)

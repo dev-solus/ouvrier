@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, BehaviorSubject, Observable, pipe } from 'rxjs';
 import { tap, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
-import { isNull } from 'util';
+
 import { FilterDataSource } from './filter-datasource';
 import { FilterService } from '../filter.service';
 

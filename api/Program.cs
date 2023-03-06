@@ -5,6 +5,7 @@ using Controllers;
 using Hubs;
 using Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,11 +28,12 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen("Mailing Core", "API documentation");
 
-    services.AddDbContext(Configuration, "sqlserver");
+    services.AddDbContext(Configuration, "sqlite");
 
     services.AddAuthentication(Configuration);
     services.AddAuthorization();
 
+    services.AddScoped<IDataRepository<User>, UserManager>();
     services.AddScoped<Crypto>();
     services.AddScoped<MyContext>();
     services.AddScoped<TokenHandler>();
@@ -51,7 +53,11 @@ var builder = WebApplication.CreateBuilder(args);
         c.DefaultRequestHeaders.Add("api-key", Configuration["AppSettings:SendinBlueKey"]);
     });
 
-    services.AddControllers().AddNewtonsoftJson();
+    services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 }
 
 var app = builder.Build();

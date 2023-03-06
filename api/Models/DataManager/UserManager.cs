@@ -1,7 +1,6 @@
-using Models.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Models.DataManager
+namespace Models
 {
     public class UserManager : IDataRepository<User>
     {

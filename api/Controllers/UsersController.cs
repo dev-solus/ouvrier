@@ -11,9 +11,6 @@ using Models;
 using asp.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using System.ComponentModel.DataAnnotations;
-using Models.Repository;
-using Microsoft.AspNetCore.Http;
-using System.IO;
 
 namespace asp.Controllers
 {

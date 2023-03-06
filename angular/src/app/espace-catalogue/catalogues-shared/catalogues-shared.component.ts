@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Catalogue, User } from '../../Models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { CatalogueService } from '../catalogue.service';
   templateUrl: './catalogues-shared.component.html',
   styleUrls: ['./catalogues-shared.component.scss']
 })
-export class CataloguesSharedComponent implements OnInit {
+export class CataloguesSharedComponent implements OnInit, AfterViewInit {
   catalogues: Catalogue[] = [];
   // idToDelete: number;
   // we need this id for nowing with catalogues to bgings for him
@@ -23,10 +23,12 @@ export class CataloguesSharedComponent implements OnInit {
   constructor(private service: CatalogueService
     , private route: Router, public dialog: MatDialog, private session: SessionService) {
   }
+  ngAfterViewInit(): void {
+    this.setPagination();
+  }
 
   ngOnInit() {
     this.getList();
-    this.setPagination();
   }
 
   getList(startIndex = 0, pageSize = 6) {

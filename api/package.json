@@ -1,0 +1,11 @@
+{
+  "name": "market_place",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "----------------------",
+    "install": "dotnet restore && cd angular && npm i",
+    "b": "cd api && dotnet watch run",
+    "r": "dotnet ef dbcontext scaffold \"data source=65.109.65.236;database=Mailing;user id=sa; password=Rev0luti0n@@2022**@+; TrustServerCertificate=True\" Microsoft.EntityFrameworkCore.SqlServer -o Models -c \"MyContext\" -f",
+    "m": "dotnet ef migrations add \"add roles\" --context MyContext --output-dir Migrations/project && dotnet ef database update --context MyContext && dotnet watch run"
+  }
+}

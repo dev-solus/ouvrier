@@ -15,14 +15,14 @@ export class OuvrierComponent implements OnInit, OnDestroy {
   sub: any;
   id: number;
   constructor(private route: Router, private routeA: ActivatedRoute, private service: OuvrierService) {
-    this.sub = this.routeA.params.subscribe(params => {
-      // this.getData(params['id']);
-      this.id = params['id'];
-    });
   }
 
   ngOnInit() {
-    this.o = this.service.get(this.id);
+    this.sub = this.routeA.params.subscribe(params => {
+      // this.getData(params['id']);
+      this.id = params['id'];
+      this.o = this.service.get(this.id);
+    });
   }
 
   // getData() {

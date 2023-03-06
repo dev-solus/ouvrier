@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ const IMG2_GIF = ASSETS_PATH + 'disk.gif';
   templateUrl: './img-display.component.html',
   styleUrls: ['./img-display.component.css']
 })
-export class ImgDisplayComponent implements OnInit {
+export class ImgDisplayComponent implements OnInit, AfterViewInit {
   @Input() img: string;
   @Input() width = '';
   @Input() height = '';
@@ -27,13 +27,16 @@ export class ImgDisplayComponent implements OnInit {
   @Input() heightProgressBar = '';
   @ViewChild('im') imgHTML: ElementRef;
   isImageLoading = true;
-
+  urlImage: string
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) protected platformId: Object) { }
 
   ngOnInit() {
-    this.getImageFromService();
+    this.urlImage = API_URL + this.img;
   }
 
+  ngAfterViewInit(): void {
+    // this.getImageFromService();
+  }
   service(): Observable<Blob> {
     return this.http.get(API_URL + this.img, { responseType: 'blob' });
   }

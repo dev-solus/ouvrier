@@ -19,9 +19,11 @@ namespace Services
         {
             services.AddDbContext<MyContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString(ConnectionString), op => op.CommandTimeout(60));
+                // options.UseSqlServer(Configuration.GetConnectionString(ConnectionString), op => op.CommandTimeout(60));
+                options.UseSqlite(Configuration.GetConnectionString(ConnectionString));
                 options.EnableSensitiveDataLogging();
                 options.EnableDetailedErrors();
+
             });
 
         }

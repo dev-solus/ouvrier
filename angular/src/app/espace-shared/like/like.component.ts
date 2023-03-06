@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection } from '@microsoft/signalr';
 import { environment } from '../../../environments/environment';
 import { SessionService } from '../../auth/session.service';
-import * as signalR from '@aspnet/signalr';
+import * as signalR from '@microsoft/signalr';
 import { LikeService } from './like.service';
 import { Likeuser } from '../../Models';
 
@@ -30,8 +30,8 @@ export class LikeComponent implements OnInit {
   ngOnInit() {
     this.getLikesByOuvrier();
     this.checkJaime();
-    // this.getCountComment();
     this.noteHubCnx();
+    // this.getCountComment();
   }
 
   checkJaime() {

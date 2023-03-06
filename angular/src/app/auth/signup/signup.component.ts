@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormArray, UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as jwt_decode from 'jwt-decode';
 import { User, Location, Ville, Metier, Quartier } from '../../Models';
-import { SessionService } from 'src/app/auth/session.service';
 import { AuthService } from '../auth.service';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-signup',

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
-namespace Models.Repository
+namespace Models
 {
     public interface  IDataRepository<TEntity>
     {

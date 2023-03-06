@@ -9,7 +9,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutes, AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 //
 import { NavComponent } from './nav/nav.component';
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as jwt_decode from 'jwt-decode';
 import { HttpHeaders } from '@angular/common/http';
 import { User } from '../Models';
 
@@ -57,7 +56,7 @@ export class SessionService {
     console.log(this.user);
     localStorage.clear();
     localStorage.setItem(KEYTOKEN, token);
-    localStorage.setItem(KEYUSER, btoa(JSON.stringify(user)));
+    localStorage.setItem(KEYUSER, JSON.stringify(user));
   }
 
   // se deconnecter
@@ -80,7 +79,7 @@ export class SessionService {
   public getSession(): void {
     if (localStorage.getItem(KEYTOKEN) && localStorage.getItem(KEYUSER)) {
       this.accessToken = localStorage.getItem(KEYTOKEN);
-      this.user = JSON.parse(atob(localStorage.getItem(KEYUSER)));
+      this.user = JSON.parse(localStorage.getItem(KEYUSER));
     }
   }
 

@@ -235,7 +235,7 @@ Apache-2.0
  
 
 
-@aspnet/signalr
+@microsoft/signalr
 Apache-2.0
 
 hammerjs

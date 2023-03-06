@@ -1,8 +1,9 @@
-import { Injectable } from '../../../../node_modules/@angular/core';
-import { environment } from '../../../environments/environment';
-import { Observable } from '../../../../node_modules/rxjs';
-import { HttpClient } from '../../../../node_modules/@angular/common/http';
-import { SessionService } from '../../auth/session.service';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { SessionService } from "app/auth/session.service";
+import { environment } from "environments/environment";
+import { Observable } from "rxjs";
+
 
 
 const API_URL = environment.apiUrl + 'Likeusers';

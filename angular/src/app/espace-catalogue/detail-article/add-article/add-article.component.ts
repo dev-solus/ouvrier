@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DeleteArticleComponent } from '../delete-article/delete-article.component';
 import { ArticleService } from '../../article.service';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { Article } from 'src/app/Models';
+import { Article } from 'app/Models';
 import { Observable } from 'rxjs';
 
 @Component({

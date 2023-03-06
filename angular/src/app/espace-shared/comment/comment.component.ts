@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, OnChanges, Output } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection } from '@microsoft/signalr';
 import { AppConfig } from '../../app.config';
 import { Commentaire, User } from '../../Models';
 import { SessionService } from '../../auth/session.service';
 import { CommentService } from './comment.service';
-import * as signalR from '@aspnet/signalr';
+import * as signalR from '@microsoft/signalr';
 import { environment } from '../../../environments/environment';
 
 const API_URL = environment.hubUrl; // + 'Note'; // CommentHub
