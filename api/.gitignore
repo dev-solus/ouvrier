@@ -1,0 +1,24 @@
+
+
+**/dist
+**/e2e
+**/node_modules
+**/deploy*
+# **/wwwroot
+**/bin
+**/obj
+**/docs
+**/Migrations
+**/out
+
+/obj
+
+bin*
+# db/dev.db
+
+# db/dev*
+**-shm
+**-wal
+# **t.json
+
+# wwwroot*

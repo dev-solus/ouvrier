@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+      "mailing-core-api": {
+          "commandName": "Project",
+          "launchBrowser": false,
+          "launchUrl": "api-docs",
+          "applicationUrl": "http://localhost:5000",
+          "environmentVariables": {
+              "ASPNETCORE_ENVIRONMENT": "Development"
+          }
+      }
+  }
+}
