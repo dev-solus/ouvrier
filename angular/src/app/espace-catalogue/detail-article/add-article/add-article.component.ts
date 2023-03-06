@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DeleteArticleComponent } from '../delete-article/delete-article.component';
 import { ArticleService } from '../../article.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, EventEmitter, Input, Output } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { TableSharedDataSource } from './table-shared-datasource';
 import { merge, BehaviorSubject, Observable, pipe } from 'rxjs';
 import { tap, debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';

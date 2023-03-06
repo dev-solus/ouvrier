@@ -2,7 +2,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Catalogue, Article } from '../../Models';
 import { Router, ActivatedRoute, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { CatalogueService } from '../catalogue.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { AddArticleComponent } from './add-article/add-article.component';

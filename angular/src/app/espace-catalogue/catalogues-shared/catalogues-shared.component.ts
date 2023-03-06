@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Catalogue, User } from '../../Models';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog, MatPaginator } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { DeleteComponent } from '../delete/delete.component';
 import { SessionService } from '../../auth/session.service';
 import { CatalogueService } from '../catalogue.service';
