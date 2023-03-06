@@ -1,19 +1,19 @@
-<mat-card class="m-2" style="padding: 0;border-radius: 0;">
+<mat-card appearance="outlined" class="m-2" style="padding: 0;border-radius: 0;">
   <div class="row">
     <div class="col-md-5">
       <app-img-display [img]="o.user.imageUrl" width="180px" height="180px"></app-img-display>
     </div>
     <div class="col-md-6 m-1">
-      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+      <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
         {{o.user.lastName}} {{o.user.username}}
         <mat-icon class="float-right">account_circle</mat-icon>
       </mat-card>
-      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+      <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
         {{o.user.email}}
         <mat-icon class="float-right">email</mat-icon>
       </mat-card>
 
-      <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+      <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
         {{o.user.tel}}
         <mat-icon class="float-right">contact_phone</mat-icon>
       </mat-card>
@@ -68,7 +68,7 @@
       <app-img-display [img]="a.imageUrl" width="280px" height="250px"></app-img-display>
     </div> -->
 
-    <mat-card class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
+    <mat-card appearance="outlined" class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
       <mat-card-header class="">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <h6 class="pt-3 pb-2">{{a.description}}</h6>

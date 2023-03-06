@@ -9,13 +9,13 @@
   <div class="row justify-content-center">
 
 
-    <mat-card color="primary" class="col-md-4 mr-2" style="height: 700px;padding: 0;border-radius: 0;">
+    <mat-card appearance="outlined" color="primary" class="col-md-4 mr-2" style="height: 700px;padding: 0;border-radius: 0;">
       <div class="col-md-12" style="padding: 0; padding-top: 3px;">
-        <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+        <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
           {{o.lastName}} {{o.username}}
           <mat-icon class="float-right">account_circle</mat-icon>
         </mat-card>
-        <mat-card class="m-1" style="padding: 4px;border-radius: 0; justify-content: center;">
+        <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0; justify-content: center;">
           <app-like [idOuvrier]="o.id"></app-like>
           <app-count-comment [idOuvrier]="o.id"></app-count-comment>
           <app-update-favorie [idOuvrier]="o.id"></app-update-favorie>
@@ -40,7 +40,7 @@
       </mat-card-content>
     </mat-card>
     <!-- card map -->
-    <mat-card class="col-md-7" style="padding: 14px;border-radius: 0; margin-bottom: 10px;">
+    <mat-card appearance="outlined" class="col-md-7" style="padding: 14px;border-radius: 0; margin-bottom: 10px;">
       <app-map (eventToParent)="setPosition($event)" [showMarker]="true" [lat]="o.location.lat" [lng]="o.location.lng"></app-map>
       <hr>
       <mat-toolbar color="primary">

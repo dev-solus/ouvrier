@@ -1,6 +1,6 @@
 <div class="row justify-content-center" style="min-height: calc(100vh - 240px);">
   <div *ngFor="let o of catalogues">
-    <mat-card class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
+    <mat-card appearance="outlined" class="example-card m-2" style="width: 18rem; padding: 0;border-radius: 0;">
       <!-- <a [routerLink]="['/shared/ouvrier', o.idUser]"> -->
         <ng-container *ngIf="o.articles; else elseTemplate">
           <app-img-display [img]="o.articles[0].imageUrl" widthProgressBar="30px" heightProgressBar="5px"></app-img-display>

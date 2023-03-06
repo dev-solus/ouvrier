@@ -1,4 +1,4 @@
-<mat-card class="row justify-content-center m-3">
+<mat-card appearance="outlined" class="row justify-content-center m-3">
   <!-- <ul class="list-group mt-2">
     <li class="list-group-item list-group-item-light  mb-2">Profile -->
   <div class="ml-5">
@@ -56,25 +56,25 @@
   </div>
   <div class="col-md-7">
     <div *ngFor="let o of users">
-      <mat-card class="m-2  pt-2 pb-2" style="padding: 0;border-radius: 0;">
+      <mat-card appearance="outlined" class="m-2  pt-2 pb-2" style="padding: 0;border-radius: 0;">
         <!-- <div class="row"> -->
           <!-- <div class="col-md-12">
             <app-img-display width="42px" height="42px"  [img]="o.imageUrl"></app-img-display>
           </div> -->
           <div class="col-md-12">
-            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+            <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
               {{o.username}} {{o.lastName}}
               <mat-icon class="float-right">account_circle</mat-icon>
             </mat-card>
-            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+            <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
               {{o.metier.nom}}
               <mat-icon class="float-right">work</mat-icon>
             </mat-card>
-            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+            <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
               {{o.location.quartier.nom}} / {{o.location.quartier.ville.nom}}
               <mat-icon class="float-right">home</mat-icon>
             </mat-card>
-            <mat-card class="m-1" style="padding: 4px;border-radius: 0;">
+            <mat-card appearance="outlined" class="m-1" style="padding: 4px;border-radius: 0;">
                 <app-like [idOuvrier]="o.id"></app-like>
                 <app-count-comment [idOuvrier]="o.id"></app-count-comment>
                 <app-update-favorie [idOuvrier]="o.id"></app-update-favorie>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, EventEmitter, Input, Output } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TableSharedDataSource } from './table-shared-datasource';
 import { merge, BehaviorSubject, Observable, pipe } from 'rxjs';

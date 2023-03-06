@@ -5,7 +5,7 @@ import { Catalogue, Article } from '../../Models';
 import { SessionService } from '../../auth/session.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
