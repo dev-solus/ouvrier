@@ -1,22 +1,23 @@
 name: trigger jenkins job
 
+# or add https://jenkins.mohamed-mourabit.com/github-webhook
 on:
   push:
-    branches: [main]
+    branches: [master]
+
 
 env:
-  JOB_NAME: 'destokia'
-  TOKEN: '11047e72bfa202474b4d1b44354cb8de16'
+  JOB_NAME: 'workers'
+  TOKEN: '114fc0d1d864b6fee4a850875f801152d1'
 jobs:
   build:
-    name: Notify Jenkins
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: trigger multiple Job
+    - name: trigger single Job
       uses: appleboy/jenkins-action@master
       with:
-        # url: "https://jenkins.centralium.site"
-        url: "http://65.109.65.236:7000/"
+        url: "http://194.163.148.222:7000"
         user: "admin"
         token: ${{ env.TOKEN }}
         job: "${{ env.JOB_NAME }}"

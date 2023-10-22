@@ -1,13 +1,16 @@
 #!groovy
 node {
   def apps = [
-    [name: "destokia", port: '4200', exposed_port: '4211', path: 'angular', domaine: "65.109.65.236", domaine_prefix: ''],
-    [name: "destokia-api", port: '5000', exposed_port: '5012', path: 'api', domaine: "65.109.65.236", domaine_prefix: ''],
+    [name: "workder-api", port: '5000', exposed_port: '', path: 'api', domaine: "api.workder.dev-solus.com", domaine_prefix: ''],
+    [name: "workder", port: '4000', exposed_port: '', path: 'angular', domaine: "yalouta.dev-solus.com", domaine_prefix: ''],
   ];
 
-  def DOCKER_FILE_NAME = './subApi/Dockerfile'
-
   def app
+
+  // stage('Initialize'){
+  //     def dockerHome = tool 'myDocker'
+  //     env.PATH = "${dockerHome}/bin:${env.PATH}"
+  //   }
 
   stage('Cloning Git') {
     def commit = checkout scm
@@ -45,8 +48,16 @@ node {
       app = docker.build("${e.name}", "-t ${e.name} -f ./${e.path}/Dockerfile ./${e.path}")
       // sh """docker build -t sa-dev-api-cms -f ./cmsApi/Dockerfile ./"""
 
-      sh "docker rm --force ${e.name}"
+       script{
+        try{
+            sh "docker rm --force ${e.name}"
+        }catch(Exception ex)
+        {
+          echo 'Exception occurred: ' + ex.toString()
+        }
+      }
 
+          // --volume /home/dev/volumes/${e.name}/db:/app/db \
       if (e.exposed_port == "") {
          sh """docker run -d \
           --restart unless-stopped \
@@ -55,7 +66,7 @@ node {
           --label traefik.enable=true \
           --label traefik.http.routers.${e.name}.tls=true \
           --label traefik.http.routers.${e.name}.tls.certresolver=letsencrypt \
-          --label traefik.http.routers.${e.name}.rule='Host(`${e.name}.${e.domaine}`) '\
+          --label traefik.http.routers.${e.name}.rule='Host(`${e.domaine}`) '\
           --label traefik.http.services.${e.name}.loadbalancer.server.port=${e.port} \
           --name ${e.name} \
           ${e.name}"""

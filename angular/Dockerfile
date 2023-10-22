@@ -8,12 +8,13 @@ COPY package-lock.json .
 # RUN npm ci --force --no-optional
 RUN npm i --legacy-peer-deps --no-optional
 
-RUN ./node_modules/.bin/ngcc --properties es2015
+# RUN ./node_modules/.bin/ngcc --properties es2015
 # RUN npm run ngcc
 
 COPY . .
 
 RUN npm run prod
+RUN npm run zip
 # RUN ls -al
 
 FROM nginx:alpine

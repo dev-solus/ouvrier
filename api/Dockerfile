@@ -18,4 +18,4 @@ ENV ASPNETCORE_URLS=http://+:5000
 # EXPOSE 5005
 
 COPY --from=build-env /app/publish .
-ENTRYPOINT ["dotnet", "destokia-api.dll"]
+ENTRYPOINT ["dotnet", "apps.dll"]
